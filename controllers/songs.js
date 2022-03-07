@@ -22,37 +22,37 @@ function newSong(req, res) {
 }
 
 function create(req, res) {
-const song = new Song(req.body)
-song.save(function(error){
-    if (error) return res.redirect('/songs/new')
-    res.redirect(`/songs/${song._id}`)
-}) 
+  req.body.creator = req.user.profile._id;
+  const song = new Song(req.body);
+  song.save(function (error) {
+    if (error) return res.redirect("/songs/new");
+    res.redirect(`/songs/${song._id}`);
+  });
 }
 
 function show(req, res) {
-Song.findById(req.params.id)
-.populate('creator')
-.then(song => {
-  console.log(song)
-  res.render('songs/show', {
-    song,
-    title: "Take a listen! 😇"
-  })
-})
-.catch((error) => {
-  console.log(error);
-  res.redirect("/songs");
-});
+  Song.findById(req.params.id)
+    .populate("creator")
+    .then((song) => {
+      console.log(song);
+      res.render("songs/show", {
+        song,
+        title: "Take a listen! 😇",
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.redirect("/songs");
+    });
 }
 
-function edit(req, res){
-
+function edit(req, res) {
+console.log('paul just lost to corki')
 }
 
-export { 
-    index, 
-    newSong as new,
-    create,
-    show,
-    edit,
-};
+export { index, 
+         newSong as new, 
+         create, 
+         show, 
+         edit 
+      };

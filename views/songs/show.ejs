@@ -5,5 +5,12 @@
     <p>Stay awhile and listen!</p>
     <h2><%= song.title %> - <%= song.artist %></h2>
     <p>Listen <a href="<%= song.link %>">here!</a></p>
+    
+<% if (song.creator.equals(user?.profile._id)) { %>
+    <form action="/songs/<%= song._id %>/edit" method="GET">
+    <button class="btn" type="submit">Edit the Song!</button>
+    </form>
+<% } %>
 </section>
+
 <%- include('../partials/footer') %>

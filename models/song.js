@@ -16,7 +16,7 @@ const songSchema = new Schema({
         required: true
     },
     creator: { type: Schema.Types.ObjectId, ref: 
-    'Songs'},
+    'Profile'},
 })
 
 const Song = mongoose.model("Song", songSchema)
