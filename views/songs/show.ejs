@@ -2,8 +2,9 @@
 <%- include('../partials/nav') %>
 
 <section>
-    <p>Stay awhile and listen!</p>
-    <h2><%= song.title %> - <%= song.artist %></h2>
+    <h1><%= title %></h1>
+    <h3>Recommended by <%= song.creator.name %> </h3>
+    <p><%= song.title %> - <%= song.artist %></p>
     <p>Listen <a href="<%= song.link %>">here!</a></p>
     
 <% if (song.creator.equals(user?.profile._id)) { %>
