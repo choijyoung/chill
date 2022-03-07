@@ -1,0 +1,23 @@
+<%- include('../partials/html-head') %> 
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form action="/songs/<%= song._id %>?_method=PUT" method="POST" autocomplete="off">
+    <label
+      >Song Title:
+      <input type="text" name="title" value="<%= song.title %>" />
+    </label><br>
+    <label
+      >Artist:
+      <input type="text" name="artist" value="<%= song.artist %> " />
+    </label><br>
+    <label
+      >Song Link:
+      <input type="text" name="link" value="<%= song.link %> "/>
+    </label><br>
+    <button type="submit">Complete Edit</button>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>

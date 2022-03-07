@@ -15,10 +15,17 @@ router.get('/new', isLoggedIn, songsCtrl.new)
 router.get('/:id', songsCtrl.show)
 
 // GET - localhost:3000/songs/:id/edit
-router.get('/:id/edit', songsCtrl.edit)
+router.get('/:id/edit', isLoggedIn, songsCtrl.edit)
+
+// PUT - localhost:3000/songs/:id
+router.put('/:id', isLoggedIn, songsCtrl.update)
 
 // POST - localhost:3000/songs/
-router.post('/', songsCtrl.create)
+router.post('/', isLoggedIn, songsCtrl.create)
+
+// DELETE - localhost:3000/songs/:id
+router.delete('/:id', isLoggedIn, songsCtrl.delete)
+
 
 export{
     router

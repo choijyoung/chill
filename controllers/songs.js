@@ -47,12 +47,60 @@ function show(req, res) {
 }
 
 function edit(req, res) {
-console.log('paul just lost to corki')
+  Song.findById(req.params.id)
+    .then((song) => {
+      res.render("songs/edit", {
+        song,
+        title: "Edit the song!",
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.redirect("/songs");
+    });
 }
 
-export { index, 
-         newSong as new, 
-         create, 
-         show, 
-         edit 
-      };
+function update(req, res) {
+  Song.findById(req.params.id)
+    .then((song) => {
+      if (song.creator.equals(req.user.profile._id)) {
+        song.updateOne(req.body, { new: true })
+        .then(() => {
+          res.redirect(`/songs/${song._id}`);
+        });
+      } else {
+        throw new Error("Not Allowed");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.redirect("/songs");
+    });
+}
+
+function deleteSong(req, res) {
+  Song.findById(req.params.id)
+    .then((song) => {
+      if (song.creator.equals(req.user.profile._id)) {
+        song.delete().then(() => {
+          res.redirect("/songs");
+        });
+      } else {
+        throw new Error("Not Allowed");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.redirect("/songs");
+    });
+}
+
+export {
+  index,
+  newSong as new,
+  create,
+  show,
+  edit,
+  update,
+  deleteSong as delete,
+};

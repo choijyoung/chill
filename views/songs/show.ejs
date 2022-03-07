@@ -10,6 +10,9 @@
     <form action="/songs/<%= song._id %>/edit" method="GET">
     <button class="btn" type="submit">Edit the Song!</button>
     </form>
+    <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
+    <button class="btn" type="submit">Delete Song🥲</button>
+    </form>
 <% } %>
 </section>
 
