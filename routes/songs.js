@@ -21,10 +21,13 @@ router.get('/:id/edit', isLoggedIn, songsCtrl.edit)
 router.post('/', isLoggedIn, songsCtrl.create)
 
 // POST - localhost:3000/songs/reviews
-router.post('/:id/reviews', songsCtrl.createReview)
+router.post('/:id/reviews', isLoggedIn, songsCtrl.createReview)
 
 // DELETE - localhost:3000/songs/:id
 router.delete('/:id', isLoggedIn, songsCtrl.delete)
+
+// DELETE - localhost:3000/songs/reviews
+router.delete('/:id/reviews/:reviewId', isLoggedIn, songsCtrl.deleteReview)
 
 // PUT - localhost:3000/songs/:id
 router.put('/:id', isLoggedIn, songsCtrl.update)

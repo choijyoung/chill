@@ -35,6 +35,11 @@
         <td><%= review.createdAt.toLocaleDateString() %></td>
         <td><%= review.comment %></td>
         <td><%= review.rating %></td>
+        <td>
+            <form action="/songs/<%= song._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+              <button>X</button>
+            </form>
+          </td>
       </tr>
       <% }) %>
     </tbody>

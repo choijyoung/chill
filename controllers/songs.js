@@ -103,6 +103,15 @@ function createReview(req, res) {
   })
   }
 
+function deleteReview(req, res){
+    Song.findById(req.params.id, function(err, song){
+      song.reviews.id(req.params.reviewId).remove()
+      song.save(function(err){
+        res.redirect(`/songs/${song._id}`)
+      })
+    })
+  }
+
 
 export {
   index,
@@ -112,5 +121,6 @@ export {
   edit,
   update,
   deleteSong as delete,
-  createReview
+  createReview,
+  deleteReview
 };
