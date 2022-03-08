@@ -17,14 +17,17 @@ router.get('/:id', songsCtrl.show)
 // GET - localhost:3000/songs/:id/edit
 router.get('/:id/edit', isLoggedIn, songsCtrl.edit)
 
-// PUT - localhost:3000/songs/:id
-router.put('/:id', isLoggedIn, songsCtrl.update)
-
 // POST - localhost:3000/songs/
 router.post('/', isLoggedIn, songsCtrl.create)
 
+// POST - localhost:3000/songs/reviews
+router.post('/:id/reviews', songsCtrl.createReview)
+
 // DELETE - localhost:3000/songs/:id
 router.delete('/:id', isLoggedIn, songsCtrl.delete)
+
+// PUT - localhost:3000/songs/:id
+router.put('/:id', isLoggedIn, songsCtrl.update)
 
 
 export{

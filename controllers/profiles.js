@@ -1,4 +1,5 @@
 import { Profile } from "../models/profile.js";
+import { Song } from "../models/song.js";
 
 function index(req, res){
 Profile.find({})
@@ -35,5 +36,5 @@ function show(req, res){
 
 export {
     index,
-    show
+    show,
 }

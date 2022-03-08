@@ -1,20 +1,66 @@
-<%- include('../partials/html-head') %>
+<%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %>
 
 <section>
-    <h1><%= title %></h1>
-    <h3>Recommended by <%= song.creator.name %> </h3>
-    <p><%= song.title %> - <%= song.artist %></p>
-    <p>Listen <a href="<%= song.link %>">here!</a></p>
-    
-<% if (song.creator.equals(user?.profile._id)) { %>
+  <h1><%= title %></h1>
+  <h3>Recommended by <%= song.creator.name %></h3>
+  <p><%= song.title %> - <%= song.artist %></p>
+  <p>Listen <a href="<%= song.link %>">here!</a></p>
+
+  <% if (song.creator.equals(user?.profile._id)) { %>
+  <div>
     <form action="/songs/<%= song._id %>/edit" method="GET">
-    <button class="btn" type="submit">Edit the Song!</button>
+      <button class="btn" type="submit">Edit the Song!</button>
     </form>
+  </div>
+  <div>
     <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
-    <button class="btn" type="submit">Delete Song🥲</button>
+      <button class="btn" type="submit">Delete Song</button>
     </form>
-<% } %>
+  </div>
+  <% } %>
+  <h2>Reviews</h2>
+  <% if (song.reviews.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Review</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% song.reviews.forEach(function(review) { %>
+      <tr>
+        <td><%= review.createdAt.toLocaleDateString() %></td>
+        <td><%= review.comment %></td>
+        <td><%= review.rating %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } else { %>
+  <h3>No Reviews Yet</h3>
+  <% } %>
+  <br />
+  <form action="/songs/<%= song._id %>/reviews" method="POST">
+    <label>Rating:</label>
+    <select name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option></select
+    ><br />
+    <label>Comment:</label><br />
+    <textarea name="comment" cols="30" rows="3"></textarea><br />
+    <button type="submit">Add Review</button>
+  </form>
 </section>
 
 <%- include('../partials/footer') %>

@@ -34,7 +34,6 @@ function show(req, res) {
   Song.findById(req.params.id)
     .populate("creator")
     .then((song) => {
-      console.log(song);
       res.render("songs/show", {
         song,
         title: "Take a listen! 😇",
@@ -95,6 +94,16 @@ function deleteSong(req, res) {
     });
 }
 
+function createReview(req, res) {
+  Song.findById(req.params.id, function(err, song){
+      song.reviews.push(req.body)
+      song.save(function(err){
+          res.redirect(`/songs/${song._id}`)
+      })
+  })
+  }
+
+
 export {
   index,
   newSong as new,
@@ -103,4 +112,5 @@ export {
   edit,
   update,
   deleteSong as delete,
+  createReview
 };
