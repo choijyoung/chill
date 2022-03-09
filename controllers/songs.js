@@ -95,14 +95,19 @@ function deleteSong(req, res) {
     });
 }
 
-function createReview(req, res) {
-  req.body.creator = req.user.profile._id
-  Song.findById(req.params.id, function(err, song){
+  function createReview(req, res) {
+    req.body.creator = req.user.profile._id
+    Song.findById(req.params.id)
+    .then(song => {
       song.reviews.push(req.body)
       song.save(function(err){
-          res.redirect(`/songs/${song._id}`)
+        res.redirect(`/songs/${song._id}`)
       })
-  })
+    })
+    .catch((error) => {
+      console.log(error);
+      res.redirect("/songs");
+    });
   }
 
 function deleteReview(req, res) {
@@ -115,8 +120,10 @@ function deleteReview(req, res) {
         })
       }
     })
-    
-    
+    .catch((error) => {
+      console.log(error);
+      res.redirect("/songs");
+    });
   }
 
 
