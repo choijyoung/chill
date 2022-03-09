@@ -22,6 +22,12 @@
         <li class="nav justify-content-end">
         <% if (user) { %>
           <a href="/auth/logout" class="nav-link">Logout</a>
+          <div>
+            <img class="avatar"
+              src="<%= user.profile.avatar %>"
+              alt="<%= user.profile.name %> avatar"
+            />
+          </div>
         <% } else { %>
           <a href="/auth/google" class="nav-link">Login</a>
         <% } %>
