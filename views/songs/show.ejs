@@ -1,5 +1,6 @@
 <%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %>
+<link rel="stylesheet" href="/stylesheets/show.css">
 
 <section>
   <h1><%= title %></h1>
@@ -8,12 +9,10 @@
   <p>Listen <a href="<%= song.link %>">here!</a></p>
 
   <% if (song.creator.equals(user?.profile._id)) { %>
-  <div>
+    <div class="div">
     <form action="/songs/<%= song._id %>/edit" method="GET">
       <button class="btn" type="submit">Edit the Song!</button>
     </form>
-  </div>
-  <div>
     <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
       <button class="btn" type="submit">Delete Song</button>
     </form>
