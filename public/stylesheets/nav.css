@@ -1,4 +1,14 @@
-#login {
+.navbar-nav {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.mainnav {
+    display: flex;
+    flex-direction: row;
+}
+
+.justify-content-end{
+    margin-right: 14px
 }

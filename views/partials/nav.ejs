@@ -8,6 +8,7 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        <div class="mainnav">
         <li class="nav-item active">
           <a href="/songs/new" class="nav-link">Add a Song</a>
         </li>
@@ -17,6 +18,7 @@
         <li class="nav-item active">
           <a href="/profiles" class="nav-link">View Profiles</a>
         </li>
+       </div>
         <li class="nav justify-content-end">
         <% if (user) { %>
           <a href="/auth/logout" class="nav-link">Logout</a>
