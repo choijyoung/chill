@@ -33,6 +33,7 @@ function create(req, res) {
 function show(req, res) {
   Song.findById(req.params.id)
     .populate("creator")
+    .populate({path: "reviews.creator"})
     .then((song) => {
       res.render("songs/show", {
         song,
@@ -95,6 +96,7 @@ function deleteSong(req, res) {
 }
 
 function createReview(req, res) {
+  req.body.creator = req.user.profile._id
   Song.findById(req.params.id, function(err, song){
       song.reviews.push(req.body)
       song.save(function(err){
@@ -103,13 +105,18 @@ function createReview(req, res) {
   })
   }
 
-function deleteReview(req, res){
-    Song.findById(req.params.id, function(err, song){
-      song.reviews.id(req.params.reviewId).remove()
-      song.save(function(err){
-        res.redirect(`/songs/${song._id}`)
-      })
+function deleteReview(req, res) {
+    Song.findById(req.params.id)
+    .then(song => {
+      if (song.creator.equals(req.user.profile._id)) {
+        song.reviews.id(req.params.reviewId).remove()
+        song.save(function(err){
+          res.redirect(`/songs/${song._id}`)
+        })
+      }
     })
+    
+    
   }
 
 

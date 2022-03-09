@@ -2,16 +2,10 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const reviewSchema = new Schema(
-  {
-    rating: {
-      type: Number,
-      min: 1,
-      max: 10,
-    },
-    comment: {
-      type: String,
-    },
+const reviewSchema = new Schema({
+    rating: {type: Number, min: 1, max: 10,},
+    comment: {type: String},
+    creator: { type: Schema.Types.ObjectId, ref: "Profile" },
   },
   {
     timestamps: true,

@@ -29,16 +29,19 @@
         <th>Rating</th>
       </tr>
     </thead>
-    <tbody>
-      <% song.reviews.forEach(function(review) { %>
-      <tr>
-        <td><%= review.createdAt.toLocaleDateString() %></td>
-        <td><%= review.comment %></td>
-        <td><%= review.rating %></td>
-        <td>
-            <form action="/songs/<%= song._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
-              <button>X</button>
-            </form>
+    <tbody>    
+        <% song.reviews.forEach(function(review) { %>
+            <tr>
+                <td><%= review.createdAt.toLocaleDateString() %></td>
+                <td><%= review.comment %></td>
+                <td><%= review.rating %></td>
+                <td>
+                    <% if (review.creator.equals(user?.profile._id)) { %>
+                        <form action="/songs/<%= song._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                            <button>Delete</button>
+                        </form>
+                        <% } %>
+                        
           </td>
       </tr>
       <% }) %>
