@@ -1,9 +1,25 @@
 <%- include('../partials/html-head') %> 
 <%- include('../partials/nav') %>
+<link rel="stylesheet" href="/stylesheets/new.css">
 
 <main>
   <h1><%= title %></h1>
-  <form action="/songs" method="POST" autocomplete="off">
+  <form>
+    <div class="form-group">
+      <label>Song Title</label>
+      <input type="text" class="form-control" name="title" placeholder="Enter Song Title">
+    </div>
+    <div class="form-group">
+      <label>Artist</label>
+      <input type="text" class="form-control" name="artist" placeholder="Artist Name">
+    </div>
+    <div class="form-group">
+      <label>Song Link</label>
+      <input type="text" class="form-control" name="link" placeholder="Song Link">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <!-- <form action="/songs" method="POST" autocomplete="off">
     <label
       >Song Title:
       <input type="text" name="title" />
@@ -17,7 +33,8 @@
       <input type="text" name="link" />
     </label><br>
     <button type="submit">Add Song</button>
-  </form>
+  </form> -->
 </main>
 
 <%- include('../partials/footer') %>
+
