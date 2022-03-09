@@ -1,6 +1,15 @@
 #lists {
     text-align: center;
+
+    background-color: #f3f9ff;
 }
+#listsheader {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+}
+
+
+
 
 .card-header {
     font-size: 20px;
