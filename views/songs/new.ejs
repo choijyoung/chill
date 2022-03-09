@@ -4,7 +4,8 @@
 
 <main>
   <h1><%= title %></h1>
-  <form>
+  <br>
+  <form action="/songs" method="POST" autocomplete="off">
     <div class="form-group">
       <label>Song Title</label>
       <input type="text" class="form-control" name="title" placeholder="Enter Song Title">
@@ -17,7 +18,7 @@
       <label>Song Link</label>
       <input type="text" class="form-control" name="link" placeholder="Song Link">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-dark">Submit</button>
   </form>
   <!-- <form action="/songs" method="POST" autocomplete="off">
     <label
