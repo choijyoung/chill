@@ -1,6 +1,6 @@
 # Chill❄️
 ## Introduction
-Have you ever had that moment where you try to remember a song but just can't? Yeah me too. That's why I wanted to create a website where you can log the music that you love, while recommending that song to others who access this website. 
+Have you ever had that moment where you try to remember a song but just can't? Yeah me too. That's why I wanted to create a website where you can log the music that you love, while recommending that song to others who accesses this website. 
 
 **Instructions**: You must log in to be able to add songs!
 ***
