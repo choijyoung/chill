@@ -1,3 +1,8 @@
+nav {
+    position: fixed;
+    top: 0px;
+}
+
 .navbar-nav {
     display: flex;
     justify-content: space-between;

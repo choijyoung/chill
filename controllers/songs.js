@@ -33,7 +33,7 @@ function create(req, res) {
 function show(req, res) {
   Song.findById(req.params.id)
     .populate("creator")
-    .populate({path: "reviews.creator"})
+    .populate({ path: "reviews.creator" })
     .then((song) => {
       res.render("songs/show", {
         song,
@@ -64,8 +64,7 @@ function update(req, res) {
   Song.findById(req.params.id)
     .then((song) => {
       if (song.creator.equals(req.user.profile._id)) {
-        song.updateOne(req.body, { new: true })
-        .then(() => {
+        song.updateOne(req.body, { new: true }).then(() => {
           res.redirect(`/songs/${song._id}`);
         });
       } else {
@@ -95,37 +94,34 @@ function deleteSong(req, res) {
     });
 }
 
-  function createReview(req, res) {
-    req.body.creator = req.user.profile._id
-    Song.findById(req.params.id)
-    .then(song => {
-      song.reviews.push(req.body)
-      song.save(function(err){
-        res.redirect(`/songs/${song._id}`)
-      })
+function createReview(req, res) {
+  req.body.creator = req.user.profile._id;
+  Song.findById(req.params.id)
+    .then((song) => {
+      song.reviews.push(req.body);
+      song.save(function (err) {
+        res.redirect(`/songs/${song._id}`);
+      });
     })
     .catch((error) => {
       console.log(error);
       res.redirect("/songs");
     });
-  }
+}
 
 function deleteReview(req, res) {
-    Song.findById(req.params.id)
-    .then(song => {
-      if (song.creator.equals(req.user.profile._id)) {
-        song.reviews.id(req.params.reviewId).remove()
-        song.save(function(err){
-          res.redirect(`/songs/${song._id}`)
-        })
-      }
+  Song.findById(req.params.id)
+    .then((song) => {
+      song.reviews.id(req.params.reviewId).remove();
+      song.save(function (err) {
+        res.redirect(`/songs/${song._id}`);
+      });
     })
     .catch((error) => {
       console.log(error);
       res.redirect("/songs");
     });
-  }
-
+}
 
 export {
   index,
@@ -136,5 +132,5 @@ export {
   update,
   deleteSong as delete,
   createReview,
-  deleteReview
+  deleteReview,
 };
