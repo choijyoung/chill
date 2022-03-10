@@ -34,4 +34,5 @@ Click to enter the website! [here](https://chill-jy.herokuapp.com/)
 ## Ice Box Items
 - I want to use referencing to add a song so that users will be able to add that song into their profiles.
 - I want to add a feature so that users can play the song on the website instead of going to a youtube link.
+- Add a genre tag, so people can sort by genre!
 ***
