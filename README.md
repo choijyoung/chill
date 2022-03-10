@@ -25,9 +25,9 @@ Click to enter the website! [here](https://chill-jy.herokuapp.com/)
 
 ***
 ## Preview
-<img src="https://imgur.com/3w5PROa" width="500px"> 
-<img src="https://imgur.com/PNPwhHr" width="500px"> 
-<img src="https://imgur.com/o7Z6IH5" width="500px"> 
+<img src="https://imgur.com/3w5PROa.png" width="500px"> 
+<img src="https://imgur.com/PNPwhHr.png" width="500px"> 
+<img src="https://imgur.com/o7Z6IH5.png" width="500px"> 
 
 ***
 
